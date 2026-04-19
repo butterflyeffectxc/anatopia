@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../models/body_part.dart';
+import '../theme/style.dart';
 
 class DetailPage extends StatefulWidget {
   final BodyPart bodyPart;
@@ -29,13 +30,6 @@ class _DetailPageState extends State<DetailPage> {
       print("PLAY ERROR: $e");
     }
   }
-  // Future<void> playSound() async {
-  //   await player.stop();
-  //   await player.setVolume(1.0);
-  //   await player.setReleaseMode(ReleaseMode.stop);
-
-  //   await player.play(AssetSource(currentPart.audio));
-  // }
 
   void nextPart() {
     if (currentIndex < widget.bodyPart.details.length - 1) {
@@ -55,17 +49,6 @@ class _DetailPageState extends State<DetailPage> {
   void initState() {
     super.initState();
     player.setReleaseMode(ReleaseMode.stop);
-    player.onPlayerStateChanged.listen((state) {
-      print("STATE: $state");
-    });
-
-    player.onDurationChanged.listen((d) {
-      print("DURATION: $d");
-    });
-
-    player.onPositionChanged.listen((p) {
-      print("POSITION: $p");
-    });
   }
 
   @override
@@ -86,7 +69,7 @@ class _DetailPageState extends State<DetailPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
-        title: const Text("Home"),
+        title: Text("Home", style: AppText.h5),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -95,23 +78,20 @@ class _DetailPageState extends State<DetailPage> {
             // PROGRESS
             Text(
               "${currentIndex + 1} / ${widget.bodyPart.details.length}",
-              style: TextStyle(
-                color: Colors.orange.shade400,
-                fontWeight: FontWeight.w600,
-              ),
+              style: AppText.span.copyWith(color: AppColors.orange),
             ),
 
             const SizedBox(height: 10),
 
             // TITLE
-            RichText(
-              text: TextSpan(
-                style: const TextStyle(fontSize: 28, color: Colors.black),
+            Text.rich(
+              TextSpan(
+                text: "Meet our, ",
+                style: AppText.h4.copyWith(color: Colors.black),
                 children: [
-                  const TextSpan(text: "Meet our, "),
                   TextSpan(
                     text: part.nameEnglish,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: AppText.h4.copyWith(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -119,14 +99,11 @@ class _DetailPageState extends State<DetailPage> {
 
             const SizedBox(height: 20),
 
-            // gifnya cuyyy
+            // IMAGE / GIF
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(24),
-                child: Container(
-                  color: Colors.transparent,
-                  child: Image.asset(part.image, fit: BoxFit.contain),
-                ),
+                child: Image.asset(part.image, fit: BoxFit.contain),
               ),
             ),
 
@@ -137,86 +114,70 @@ class _DetailPageState extends State<DetailPage> {
               children: [
                 Text(
                   "This is your ${part.nameEnglish}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                  ),
+                  style: AppText.h5.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 6),
                 Text(
                   part.description,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 20),
+                  style: AppText.span.copyWith(color: AppColors.grey),
                 ),
               ],
             ),
 
             const SizedBox(height: 20),
 
-            // button dinamis
-            Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // PREV
-                  if (!isFirst)
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFFFC107),
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        onPressed: prevPart,
-                        icon: const Icon(Icons.arrow_back),
-                        color: Colors.white,
-                      ),
+            // BUTTONS
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // PREV
+                if (!isFirst)
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow,
+                      shape: BoxShape.circle,
                     ),
-
-                  if (!isFirst) const SizedBox(width: 12),
-
-                  // PLAY (TENGAH)
-                  ElevatedButton.icon(
-                    onPressed: () async {
-                      await playSound();
-                    },
-                    icon: const Icon(Icons.play_arrow),
-                    label: const Text(
-                      "Play Now",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFC107),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 14,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                    child: IconButton(
+                      onPressed: prevPart,
+                      icon: const Icon(Icons.arrow_back),
+                      color: Colors.white,
                     ),
                   ),
 
-                  if (!isLast) const SizedBox(width: 12),
+                if (!isFirst) const SizedBox(width: 12),
 
-                  // NEXT
-                  if (!isLast)
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFFFC107),
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        onPressed: nextPart,
-                        icon: const Icon(Icons.arrow_forward),
-                        color: Colors.white,
-                      ),
+                // PLAY
+                ElevatedButton.icon(
+                  onPressed: playSound,
+                  icon: const Icon(Icons.play_arrow),
+                  label: Text(
+                    "Play Now",
+                    style: AppText.span.copyWith(color: Colors.white),
+                  ),
+                  style: AppButton.primary.copyWith(
+                    padding: WidgetStateProperty.all(
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                     ),
-                ],
-              ),
+                  ),
+                ),
+
+                if (!isLast) const SizedBox(width: 12),
+
+                // NEXT
+                if (!isLast)
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.yellow,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: nextPart,
+                      icon: const Icon(Icons.arrow_forward),
+                      color: Colors.white,
+                    ),
+                  ),
+              ],
             ),
 
             const SizedBox(height: 10),

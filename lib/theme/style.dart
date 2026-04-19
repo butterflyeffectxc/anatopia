@@ -33,25 +33,21 @@ class AppButton {
   static ButtonStyle primary = ElevatedButton.styleFrom(
     backgroundColor: AppColors.yellow,
     foregroundColor: Colors.white,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
+    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
   );
 
   static ButtonStyle tertiary = ElevatedButton.styleFrom(
     backgroundColor: AppColors.orange,
     foregroundColor: Colors.white,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
+    textStyle: const TextStyle(fontWeight: FontWeight.bold),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
   );
 
   static ButtonStyle secondary = ElevatedButton.styleFrom(
     backgroundColor: AppColors.lightgrey,
     foregroundColor: AppColors.grey,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
   );
   // cara pake
   // ElevatedButton(

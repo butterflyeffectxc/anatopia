@@ -6,11 +6,7 @@ class ScorePage extends StatelessWidget {
   final int score;
   final int total;
 
-  const ScorePage({
-    super.key,
-    required this.score,
-    required this.total,
-  });
+  const ScorePage({super.key, required this.score, required this.total});
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +26,18 @@ class ScorePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 children: [
+                  const Spacer(),
                   const SizedBox(height: 40),
-
                   // LOGO
                   SvgPicture.asset(
-                    "assets/images/icon_quiztopia.svg",
-                    height: 40,
+                    "assets/images/icon_quiztopia_white.svg",
+                    height: 50,
                   ),
 
                   const Spacer(),
 
-                  // EMOJI 
-                  SvgPicture.asset(
-                    "assets/images/icon_hore.svg",
-                    height: 120,
-                  ),
+                  // EMOJI
+                  Image.asset("assets/images/icon_horay.png", height: 150),
 
                   const SizedBox(height: 20),
 
@@ -60,7 +53,7 @@ class ScorePage extends StatelessWidget {
                   Text(
                     "Great job! You answered\n$score questions right!",
                     textAlign: TextAlign.center,
-                    style: AppText.span.copyWith(color: Colors.white),
+                    style: AppText.h4.copyWith(color: Colors.white),
                   ),
 
                   const SizedBox(height: 10),

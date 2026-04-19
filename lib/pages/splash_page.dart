@@ -12,8 +12,8 @@ class SplashPage extends StatelessWidget {
         children: [
           // background image
           Positioned.fill(
-            child: SvgPicture.asset(
-              "assets/images/bg_splash.svg",
+            child: Image.asset(
+              "assets/images/bg_splash.png",
               fit: BoxFit.cover,
             ),
           ),
@@ -32,8 +32,10 @@ class SplashPage extends StatelessWidget {
                   // atas
                   Column(
                     children: [
-                      SvgPicture.asset("assets/images/logo.svg"),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
+                      Image.asset("assets/images/logo.png", height: 70),
+                      // const Spacer(),
+                      const SizedBox(height: 16),
                       const Text(
                         "ANATOPIA",
                         style: TextStyle(
@@ -83,7 +85,7 @@ class SplashPage extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
-                              fontSize: 16,
+                              fontSize: 20,
                             ),
                           ),
                         ),

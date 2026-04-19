@@ -15,8 +15,8 @@ class IntroPage extends StatelessWidget {
         children: [
           // background
           Positioned.fill(
-            child: SvgPicture.asset(
-              "assets/images/bg_main.svg",
+            child: Image.asset(
+              "assets/images/bg_orange.png",
               fit: BoxFit.cover,
             ),
           ),

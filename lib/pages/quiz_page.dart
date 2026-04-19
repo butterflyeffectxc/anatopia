@@ -28,7 +28,7 @@ class _QuizPageState extends State<QuizPage> {
     super.initState();
     questions = List.from(widget.quizList);
     questions.shuffle();
-    questions = questions.take(5).toList(); // 
+    questions = questions.take(5).toList(); //
     loadQuestion();
   }
 
@@ -112,7 +112,15 @@ class _QuizPageState extends State<QuizPage> {
 
     return Scaffold(
       backgroundColor: getBackgroundColor(),
-      appBar: AppBar(title: const Text("Quiz"), centerTitle: true),
+      appBar: AppBar(
+        backgroundColor: getBackgroundColor(),
+        elevation: 0,
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: answered ? Colors.black : Colors.black, // bisa lu adjust nanti
+        ),
+        title: Text("Quiz", style: AppText.h5.copyWith(color: Colors.black)),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
