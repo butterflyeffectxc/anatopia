@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/style.dart';
 
 class ScorePage extends StatelessWidget {
@@ -15,8 +14,8 @@ class ScorePage extends StatelessWidget {
         children: [
           // BACKGROUND
           Positioned.fill(
-            child: SvgPicture.asset(
-              "assets/images/bg_quiz.svg",
+            child: Image.asset(
+              "assets/images/bg_quiz.png",
               fit: BoxFit.cover,
             ),
           ),
@@ -29,8 +28,8 @@ class ScorePage extends StatelessWidget {
                   const Spacer(),
                   const SizedBox(height: 40),
                   // LOGO
-                  SvgPicture.asset(
-                    "assets/images/icon_quiztopia_white.svg",
+                  Image.asset(
+                    "assets/images/icon_quiztopia_white.png",
                     height: 50,
                   ),
 

@@ -21,12 +21,36 @@ class AppColors {
 }
 
 class AppText {
-  static const h1 = TextStyle(fontSize: 56, fontWeight: FontWeight.bold);
-  static const h2 = TextStyle(fontSize: 40, fontWeight: FontWeight.w600);
-  static const h3 = TextStyle(fontSize: 36, fontWeight: FontWeight.w600);
-  static const h4 = TextStyle(fontSize: 26, fontWeight: FontWeight.w600);
-  static const h5 = TextStyle(fontSize: 24, fontWeight: FontWeight.w500);
-  static const span = TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
+  static const h1 = TextStyle(
+    fontSize: 56,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Fredoka',
+  );
+  static const h2 = TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Fredoka',
+  );
+  static const h3 = TextStyle(
+    fontSize: 36,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Fredoka',
+  );
+  static const h4 = TextStyle(
+    fontSize: 26,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Fredoka',
+  );
+  static const h5 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Fredoka',
+  );
+  static const span = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Fredoka',
+  );
 }
 
 class AppButton {

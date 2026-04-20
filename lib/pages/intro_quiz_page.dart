@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_body/pages/quiz_page.dart';
 import '../models/quiz.dart';
 import '../theme/style.dart';
@@ -15,8 +14,8 @@ class IntroQuizPage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned.fill(
-            child: SvgPicture.asset(
-              "assets/images/bg_quiz.svg",
+            child: Image.asset(
+              "assets/images/bg_quiz.png",
               fit: BoxFit.cover,
             ),
           ),
@@ -31,8 +30,8 @@ class IntroQuizPage extends StatelessWidget {
                 children: [
                   const Spacer(),
 
-                  SvgPicture.asset(
-                    "assets/images/icon_quiztopia.svg",
+                  Image.asset(
+                    "assets/images/icon_quiztopia.png",
                     height: 120,
                   ),
 
